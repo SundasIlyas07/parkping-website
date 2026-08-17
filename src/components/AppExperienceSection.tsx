@@ -266,7 +266,7 @@ export const AppExperienceSection: React.FC<AppExperienceSectionProps> = ({ onOp
             </div>
 
             {/* Screen Navigation Tabs */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+            <div className="app-screen-nav-tabs no-scrollbar" style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
               {SCREENS.map((s, idx) => {
                 const isActive = idx === activeIdx;
                 return (
@@ -1011,7 +1011,19 @@ export const AppExperienceSection: React.FC<AppExperienceSectionProps> = ({ onOp
         @media (max-width: 900px) {
           .app-showcase-grid {
             grid-template-columns: 1fr !important;
-            gap: 40px !important;
+            gap: 32px !important;
+          }
+          .app-screen-nav-tabs {
+            flex-direction: row !important;
+            overflow-x: auto !important;
+            white-space: nowrap !important;
+            padding-bottom: 6px !important;
+            width: 100% !important;
+          }
+          .app-screen-nav-tabs button {
+            flex-shrink: 0 !important;
+            transform: none !important;
+            padding: 10px 14px !important;
           }
         }
         @media (max-width: 640px) {
@@ -1027,7 +1039,7 @@ export const AppExperienceSection: React.FC<AppExperienceSectionProps> = ({ onOp
             right: 0 !important;
           }
           .phone-mockup-frame {
-            width: clamp(260px, 85vw, 300px) !important;
+            width: clamp(260px, 85vw, 290px) !important;
           }
           .app-cta-banner {
             padding: 24px 16px !important;

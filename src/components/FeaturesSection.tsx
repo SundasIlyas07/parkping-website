@@ -200,6 +200,7 @@ export const FeaturesSection: React.FC = () => {
 
         {/* Pillar Category Tabs */}
         <div
+          className="features-cat-tabs no-scrollbar"
           style={{
             display: 'flex',
             alignItems: 'center',
@@ -629,6 +630,20 @@ export const FeaturesSection: React.FC = () => {
           }
           .feature-meta-grid {
             grid-template-columns: 1fr !important;
+          }
+          .features-cat-tabs {
+            justify-content: flex-start !important;
+            flex-wrap: nowrap !important;
+            overflow-x: auto !important;
+            padding-bottom: 8px !important;
+            margin-bottom: 28px !important;
+            width: 100% !important;
+          }
+          .features-cat-tabs button {
+            flex-shrink: 0 !important;
+            white-space: nowrap !important;
+            padding: 10px 16px !important;
+            font-size: 0.8125rem !important;
           }
         }
       `}</style>

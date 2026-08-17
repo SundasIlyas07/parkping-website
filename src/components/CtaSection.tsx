@@ -111,7 +111,7 @@ export const CtaSection: React.FC<CtaSectionProps> = ({ onOpenDownloadModal }) =
           </p>
 
           {/* Primary & Secondary CTA Buttons */}
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '14px', justifyContent: 'center', marginTop: '12px' }}>
+          <div className="mobile-btn-stack" style={{ display: 'flex', flexWrap: 'wrap', gap: '14px', justifyContent: 'center', marginTop: '12px' }}>
             <button
               type="button"
               onClick={onOpenDownloadModal}

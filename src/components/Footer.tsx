@@ -444,6 +444,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenDownloadModal }) => {
 
         {/* Bottom Legal & Copyright Bar */}
         <div
+          className="footer-bottom-bar"
           style={{
             paddingTop: '24px',
             display: 'flex',
@@ -476,7 +477,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenDownloadModal }) => {
             </span>
           </div>
 
-          <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '20px', flexWrap: 'wrap' }}>
             <a
               href="#privacy"
               style={{ fontSize: '0.8125rem', color: '#94A3B8', textDecoration: 'none', transition: 'color 0.2s ease' }}
@@ -507,9 +508,23 @@ export const Footer: React.FC<FooterProps> = ({ onOpenDownloadModal }) => {
             grid-column: 1 / -1 !important;
           }
         }
-        @media (max-width: 540px) {
+        @media (max-width: 640px) {
+          #footer {
+            padding-top: 48px !important;
+            padding-bottom: 32px !important;
+          }
           .footer-grid {
             grid-template-columns: 1fr !important;
+            gap: 28px !important;
+          }
+          .footer-bottom-bar {
+            flex-direction: column !important;
+            align-items: center !important;
+            text-align: center !important;
+            gap: 12px !important;
+          }
+          .footer-bottom-bar > div {
+            justify-content: center !important;
           }
         }
       `}</style>

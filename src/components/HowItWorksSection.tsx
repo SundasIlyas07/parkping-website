@@ -394,17 +394,23 @@ export const HowItWorksSection: React.FC = () => {
         </div>
       </div>
 
-      {/* Responsive grid override */}
+      {/* Responsive grid override & mobile connecting line */}
       <style>{`
         @media (max-width: 768px) {
           .step-chapter-grid {
             grid-template-columns: 1fr !important;
-            gap: 32px !important;
-            padding-top: 48px !important;
-            padding-bottom: 48px !important;
+            gap: 24px !important;
+            padding-top: 36px !important;
+            padding-bottom: 36px !important;
+            position: relative;
           }
           .step-chapter-grid > div {
             order: unset !important;
+            width: 100% !important;
+          }
+          .step-chapter-grid div[style*="font-size: 4rem"] {
+            font-size: 2.75rem !important;
+            margin-bottom: 4px !important;
           }
         }
       `}</style>

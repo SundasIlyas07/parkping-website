@@ -692,7 +692,114 @@ h1, h2, h3, h4, h5, h6 {
 .opacity-0 { opacity: 0; }
 .pointer-none { pointer-events: none; }
 
-/* Responsive helpers */
-@media (max-width: 1024px) {
-  .step-chapter { gap: 40px; }
+/* ============================================================
+   RESPONSIVE MOBILE DESIGN SYSTEM & OVERLAY UTILITIES
+   ============================================================ */
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  /* Global section spacing */
+  section {
+    padding-top: 56px !important;
+    padding-bottom: 56px !important;
+  }
+
+  .container-pad {
+    padding-left: 18px !important;
+    padding-right: 18px !important;
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+
+  /* Typography clamp overrides for mobile */
+  h1 {
+    font-size: clamp(2rem, 7vw, 2.6rem) !important;
+    line-height: 1.15 !important;
+    letter-spacing: -0.025em !important;
+  }
+
+  h2 {
+    font-size: clamp(1.5rem, 5.5vw, 1.95rem) !important;
+    line-height: 1.2 !important;
+    letter-spacing: -0.02em !important;
+  }
+
+  h3 {
+    font-size: clamp(1.2rem, 4.5vw, 1.45rem) !important;
+    line-height: 1.25 !important;
+  }
+
+  p {
+    font-size: 0.9375rem !important;
+    line-height: 1.65 !important;
+  }
+
+  /* Button stacking for mobile hero / CTAs */
+  .mobile-btn-stack {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 12px !important;
+  }
+
+  .mobile-btn-stack .btn-primary,
+  .mobile-btn-stack .btn-secondary,
+  .mobile-btn-stack a,
+  .mobile-btn-stack button {
+    width: 100% !important;
+    justify-content: center !important;
+    text-align: center !important;
+    padding: 14px 20px !important;
+    font-size: 0.9375rem !important;
+  }
+
+  /* Cards & Containers responsive fit */
+  .problem-card,
+  .feature-story,
+  .contact-card,
+  .hero-scene,
+  .problem-bridge-card {
+    padding: 22px 18px !important;
+    border-radius: 20px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Grid overrides */
+  .hero-grid,
+  .footer-grid,
+  .step-chapter-grid,
+  .privacy-flow-diagram {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 32px !important;
+    width: 100% !important;
+  }
+
+  .hero-col-left,
+  .hero-col-right {
+    grid-column: span 12 !important;
+    width: 100% !important;
+  }
+
+  /* Phone Mockup Mobile Scaler */
+  .phone-frame {
+    width: 100% !important;
+    max-width: 290px !important;
+    margin: 0 auto !important;
+  }
+
+  /* Hide excessive background ambient blurs on mobile that cause overflow */
+  div[style*="radial-gradient"][style*="filter: blur"] {
+    max-width: 100vw !important;
+    overflow: hidden !important;
+  }
+}
+

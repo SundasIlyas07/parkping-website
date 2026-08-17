@@ -165,6 +165,7 @@ export const SolutionSection: React.FC = () => {
 
         {/* Differentiator stat row */}
         <div
+          className="solution-stat-row"
           style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))',
@@ -208,6 +209,19 @@ export const SolutionSection: React.FC = () => {
           ))}
         </div>
       </div>
+
+      <style>{`
+        @media (max-width: 640px) {
+          .solution-stat-row {
+            grid-template-columns: repeat(2, 1fr) !important;
+            padding: 20px 14px !important;
+            gap: 12px !important;
+          }
+          .solution-stat-row div[style*="font-size: 2rem"] {
+            font-size: 1.5rem !important;
+          }
+        }
+      `}</style>
     </section>
   );
 };

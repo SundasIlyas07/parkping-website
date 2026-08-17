@@ -111,21 +111,23 @@ export const ProblemSection: React.FC = () => {
               </div>
 
               {/* Badge + Title */}
-              <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: '12px', marginBottom: '12px' }}>
-                <h3
-                  style={{
-                    fontFamily: 'var(--font-heading)',
-                    fontWeight: 800,
-                    fontSize: '1.125rem',
-                    color: '#0F172A',
-                    lineHeight: 1.2,
-                  }}
-                >
-                  {p.title}
-                </h3>
-                <span className={p.badgeClass} style={{ flexShrink: 0, fontSize: '0.6875rem' }}>
-                  {p.badge}
-                </span>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginBottom: '12px' }}>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '8px' }}>
+                  <h3
+                    style={{
+                      fontFamily: 'var(--font-heading)',
+                      fontWeight: 800,
+                      fontSize: '1.125rem',
+                      color: '#0F172A',
+                      lineHeight: 1.2,
+                    }}
+                  >
+                    {p.title}
+                  </h3>
+                  <span className={p.badgeClass} style={{ flexShrink: 0, fontSize: '0.6875rem' }}>
+                    {p.badge}
+                  </span>
+                </div>
               </div>
 
               <p

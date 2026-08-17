@@ -287,9 +287,11 @@ export const ContactSection: React.FC = () => {
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
+                  flexWrap: 'wrap',
                   gap: '6px',
                   fontSize: '0.8125rem',
                   color: '#64748B',
+                  textAlign: 'center',
                 }}
               >
                 <Code2 size={14} color="#0B65ED" />

@@ -37,11 +37,11 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenDownloadModal }) => {
         top: 0, left: 0, right: 0,
         zIndex: 50,
         transition: 'all 0.3s ease',
-        background: scrolled ? 'rgba(255,255,255,0.92)' : 'transparent',
-        backdropFilter: scrolled ? 'blur(20px)' : 'none',
-        WebkitBackdropFilter: scrolled ? 'blur(20px)' : 'none',
-        boxShadow: scrolled ? '0 1px 0 rgba(15,23,42,0.08), 0 4px 16px rgba(15,23,42,0.06)' : 'none',
-        padding: scrolled ? '12px 0' : '20px 0',
+        background: scrolled ? 'rgba(255,255,255,0.95)' : 'rgba(255,255,255,0.85)',
+        backdropFilter: 'blur(20px)',
+        WebkitBackdropFilter: 'blur(20px)',
+        boxShadow: scrolled ? '0 1px 0 rgba(15,23,42,0.08), 0 4px 16px rgba(15,23,42,0.06)' : '0 1px 0 rgba(15,23,42,0.04)',
+        padding: isMobile ? '12px 0' : (scrolled ? '12px 0' : '20px 0'),
       }}
     >
       <div
@@ -60,13 +60,13 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenDownloadModal }) => {
           <img
             src={logoSvg}
             alt="ParkPing"
-            style={{ width: 36, height: 36, objectFit: 'contain', display: 'block' }}
+            style={{ width: isMobile ? 30 : 36, height: isMobile ? 30 : 36, objectFit: 'contain', display: 'block' }}
           />
           <span
             style={{
               fontFamily: 'var(--font-heading)',
               fontWeight: 800,
-              fontSize: '1.125rem',
+              fontSize: isMobile ? '1.05rem' : '1.125rem',
               letterSpacing: '-0.02em',
               color: '#0F172A',
             }}
@@ -117,78 +117,92 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenDownloadModal }) => {
             type="button"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             style={{
-              padding: '8px',
+              padding: '8px 12px',
               borderRadius: '10px',
-              background: mobileMenuOpen ? '#EFF6FF' : 'transparent',
+              background: mobileMenuOpen ? '#EFF6FF' : '#F8FAFC',
               border: `1.5px solid ${mobileMenuOpen ? '#DBEAFE' : 'rgba(15,23,42,0.1)'}`,
               color: '#0F172A',
               cursor: 'pointer',
-              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px',
               transition: 'all 0.15s ease',
             }}
             aria-label="Toggle navigation"
           >
-            {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+            <span style={{ fontSize: '0.75rem', fontWeight: 700, fontFamily: 'var(--font-heading)', color: '#0F172A' }}>
+              {mobileMenuOpen ? 'CLOSE' : 'MENU'}
+            </span>
+            {mobileMenuOpen ? <X size={18} /> : <Menu size={18} />}
           </button>
         )}
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Drawer Navigation Panel */}
       {isMobile && mobileMenuOpen && (
         <div
           style={{
+            position: 'fixed',
+            top: '56px',
+            left: 0,
+            right: 0,
+            height: 'calc(100vh - 56px)',
+            background: 'rgba(255,255,255,0.98)',
+            backdropFilter: 'blur(24px)',
+            WebkitBackdropFilter: 'blur(24px)',
             borderTop: '1px solid rgba(15,23,42,0.08)',
-            background: 'rgba(255,255,255,0.97)',
-            backdropFilter: 'blur(20px)',
-            WebkitBackdropFilter: 'blur(20px)',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'space-between',
+            padding: '24px 20px 40px',
+            overflowY: 'auto',
+            zIndex: 99,
           }}
         >
-          <nav
-            className="container-pad"
-            style={{ paddingTop: '20px', paddingBottom: '20px', display: 'flex', flexDirection: 'column', gap: '4px' }}
-          >
+          <nav style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+            <div style={{ fontSize: '0.7rem', fontWeight: 800, color: '#94A3B8', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '8px', paddingLeft: '12px' }}>
+              Navigation Menu
+            </div>
             {navLinks.map(link => (
               <a
                 key={link.href}
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
                 style={{
-                  fontFamily: 'var(--font-body)',
-                  fontSize: '1rem',
-                  fontWeight: 500,
-                  color: '#334155',
+                  fontFamily: 'var(--font-heading)',
+                  fontSize: '1.0625rem',
+                  fontWeight: 700,
+                  color: '#0F172A',
                   textDecoration: 'none',
-                  padding: '12px 16px',
-                  borderRadius: '10px',
-                  display: 'block',
-                  transition: 'all 0.15s ease',
-                }}
-                onMouseEnter={e => {
-                  (e.currentTarget as HTMLAnchorElement).style.background = '#EFF6FF';
-                  (e.currentTarget as HTMLAnchorElement).style.color = '#0B65ED';
-                }}
-                onMouseLeave={e => {
-                  (e.currentTarget as HTMLAnchorElement).style.background = 'transparent';
-                  (e.currentTarget as HTMLAnchorElement).style.color = '#334155';
+                  padding: '14px 16px',
+                  borderRadius: '12px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'space-between',
+                  background: '#F8FAFC',
+                  border: '1px solid rgba(15,23,42,0.04)',
                 }}
               >
-                {link.label}
+                <span>{link.label}</span>
+                <span style={{ color: '#0B65ED', fontWeight: 800 }}>→</span>
               </a>
             ))}
-            <div style={{ paddingTop: '12px', marginTop: '8px', borderTop: '1px solid rgba(15,23,42,0.08)' }}>
-              <button
-                type="button"
-                onClick={() => {
-                  setMobileMenuOpen(false);
-                  onOpenDownloadModal();
-                }}
-                className="btn-primary"
-                style={{ width: '100%', justifyContent: 'center', padding: '14px 24px' }}
-              >
-                Get the App
-              </button>
-            </div>
           </nav>
+
+          <div style={{ paddingTop: '20px', borderTop: '1px solid rgba(15,23,42,0.08)', display: 'flex', flexDirection: 'column', gap: '12px' }}>
+            <button
+              type="button"
+              onClick={() => {
+                setMobileMenuOpen(false);
+                onOpenDownloadModal();
+              }}
+              className="btn-primary"
+              style={{ width: '100%', justifyContent: 'center', padding: '16px 24px', fontSize: '1rem' }}
+            >
+              Get the ParkPing App
+            </button>
+            <div style={{ textAlign: 'center', fontSize: '0.75rem', color: '#64748B' }}>
+              🔒 100% Phone Number Privacy Masking
+            </div>
+          </div>
         </div>
       )}
     </header>

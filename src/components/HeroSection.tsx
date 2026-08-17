@@ -171,7 +171,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenDownloadModal })
             </p>
 
             {/* CTA Buttons */}
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', marginBottom: '40px' }}>
+            <div className="mobile-btn-stack" style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', marginBottom: '40px' }}>
               <button
                 onClick={onOpenDownloadModal}
                 className="btn-primary"
@@ -194,7 +194,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenDownloadModal })
               style={{
                 display: 'flex',
                 flexWrap: 'wrap',
-                gap: '20px',
+                gap: '16px',
                 paddingTop: '24px',
                 borderTop: '1px solid rgba(15,23,42,0.08)',
               }}
@@ -206,7 +206,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenDownloadModal })
               ].map(badge => (
                 <div
                   key={badge.text}
-                  style={{ display: 'flex', alignItems: 'center', gap: '8px' }}
+                  style={{ display: 'flex', alignItems: 'center', gap: '8px', flexShrink: 0 }}
                 >
                   <span style={{ fontSize: '0.9rem' }}>{badge.icon}</span>
                   <span
@@ -225,8 +225,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenDownloadModal })
           </div>
 
           {/* ── RIGHT COLUMN — Cinematic Scene ── */}
-          <div className="hero-col-right" style={{ gridColumn: 'span 6' }}>
-            <div className="hero-scene" style={{ flexDirection: 'column', gap: '0', padding: '0' }}>
+          <div className="hero-col-right" style={{ gridColumn: 'span 6', width: '100%' }}>
+            <div className="hero-scene" style={{ flexDirection: 'column', gap: '0', padding: '0', width: '100%' }}>
               {/* Scene top bar */}
               <div
                 style={{
@@ -743,48 +743,50 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenDownloadModal })
                 </div>
 
                 {/* Step indicator dots + phase name */}
-                <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                  {PHASES.map((p, i) => (
-                    <button
-                      key={p.id}
-                      type="button"
-                      onClick={() => { setPhase(i); setPlaying(false); }}
+                <div style={{ display: 'flex', alignItems: 'center', gap: '6px', flexWrap: 'wrap', justifyContent: 'space-between', width: '100%' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
+                    {PHASES.map((p, i) => (
+                      <button
+                        key={p.id}
+                        type="button"
+                        onClick={() => { setPhase(i); setPlaying(false); }}
+                        style={{
+                          height: 6,
+                          width: phase === i ? 20 : 6,
+                          borderRadius: 99,
+                          background: phase === i ? '#0B65ED' : '#CBD5E1',
+                          border: 'none',
+                          cursor: 'pointer',
+                          transition: 'all 0.3s ease',
+                          padding: 0,
+                        }}
+                        aria-label={`Go to phase ${i + 1}: ${p.label}`}
+                      />
+                    ))}
+                    <span
                       style={{
-                        height: 6,
-                        width: phase === i ? 24 : 8,
-                        borderRadius: 99,
-                        background: phase === i ? '#0B65ED' : '#CBD5E1',
-                        border: 'none',
-                        cursor: 'pointer',
-                        transition: 'all 0.3s ease',
-                        padding: 0,
+                        fontFamily: 'var(--font-heading)',
+                        fontSize: '0.6875rem',
+                        fontWeight: 600,
+                        color: '#94A3B8',
+                        marginLeft: '4px',
                       }}
-                      aria-label={`Go to phase ${i + 1}: ${p.label}`}
-                    />
-                  ))}
-                  <span
-                    style={{
-                      fontFamily: 'var(--font-heading)',
-                      fontSize: '0.6875rem',
-                      fontWeight: 600,
-                      color: '#94A3B8',
-                      marginLeft: '4px',
-                    }}
-                  >
-                    {phase + 1} / {PHASES.length}
-                  </span>
+                    >
+                      {phase + 1}/{PHASES.length}
+                    </span>
+                  </div>
                   <button
                     type="button"
                     onClick={() => setPlaying(p => !p)}
                     style={{
-                      marginLeft: 'auto',
                       fontSize: '0.6875rem',
                       fontWeight: 600,
                       color: '#0B65ED',
-                      background: 'none',
-                      border: 'none',
+                      background: '#EFF6FF',
+                      borderRadius: '6px',
+                      border: '1px solid #DBEAFE',
                       cursor: 'pointer',
-                      padding: '2px 6px',
+                      padding: '4px 8px',
                     }}
                   >
                     {playing ? '⏸ Pause' : '▶ Play'}
