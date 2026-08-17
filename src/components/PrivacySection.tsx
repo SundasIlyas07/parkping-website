@@ -94,6 +94,7 @@ export const PrivacySection: React.FC = () => {
 
           {/* Flow Diagram */}
           <div
+            className="privacy-flow-diagram"
             style={{
               display: 'flex',
               alignItems: 'center',
@@ -126,7 +127,7 @@ export const PrivacySection: React.FC = () => {
             </div>
 
             {/* Arrow */}
-            <div style={{ width: 40, height: 2, background: 'linear-gradient(90deg, #CBD5E1, #0B65ED)', flexShrink: 0, position: 'relative' }}>
+            <div className="privacy-flow-arrow" style={{ width: 40, height: 2, background: 'linear-gradient(90deg, #CBD5E1, #0B65ED)', flexShrink: 0, position: 'relative' }}>
               <div style={{ position: 'absolute', right: -1, top: '50%', transform: 'translateY(-50%)', border: '5px solid transparent', borderLeft: '6px solid #0B65ED' }} />
             </div>
 
@@ -165,7 +166,7 @@ export const PrivacySection: React.FC = () => {
             </div>
 
             {/* Arrow */}
-            <div style={{ width: 40, height: 2, background: 'linear-gradient(90deg, #0B65ED, #CBD5E1)', flexShrink: 0, position: 'relative' }}>
+            <div className="privacy-flow-arrow" style={{ width: 40, height: 2, background: 'linear-gradient(90deg, #0B65ED, #CBD5E1)', flexShrink: 0, position: 'relative' }}>
               <div style={{ position: 'absolute', right: -1, top: '50%', transform: 'translateY(-50%)', border: '5px solid transparent', borderLeft: '6px solid #CBD5E1' }} />
             </div>
 
@@ -300,6 +301,28 @@ export const PrivacySection: React.FC = () => {
           </span>
         </div>
       </div>
+
+      <style>{`
+        @media (max-width: 640px) {
+          .privacy-flow-diagram {
+            flex-direction: column !important;
+            gap: 12px !important;
+          }
+          .privacy-flow-arrow {
+            width: 2px !important;
+            height: 24px !important;
+            background: linear-gradient(180deg, #CBD5E1, #0B65ED) !important;
+          }
+          .privacy-flow-arrow > div {
+            right: 50% !important;
+            top: auto !important;
+            bottom: -4px !important;
+            transform: translateX(50%) !important;
+            border: 5px solid transparent !important;
+            border-top: 6px solid #0B65ED !important;
+          }
+        }
+      `}</style>
     </section>
   );
 };

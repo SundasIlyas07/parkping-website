@@ -177,6 +177,7 @@ export const ProblemSection: React.FC = () => {
 
         {/* Transition bridge into solution */}
         <div
+          className="problem-bridge-card"
           style={{
             maxWidth: '720px',
             margin: '0 auto',
@@ -212,6 +213,14 @@ export const ProblemSection: React.FC = () => {
           </a>
         </div>
       </div>
+
+      <style>{`
+        @media (max-width: 640px) {
+          .problem-bridge-card {
+            padding: 24px 16px !important;
+          }
+        }
+      `}</style>
     </section>
   );
 };

@@ -116,6 +116,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenDownloadModal })
 
       <div className="container-pad" style={{ position: 'relative', zIndex: 1 }}>
         <div
+          className="hero-grid"
           style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(12, 1fr)',
@@ -124,7 +125,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenDownloadModal })
           }}
         >
           {/* ── LEFT COLUMN ── */}
-          <div style={{ gridColumn: 'span 6' }}>
+          <div className="hero-col-left" style={{ gridColumn: 'span 6' }}>
             {/* Eyebrow */}
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '24px' }}>
               <ShieldCheck size={16} color="#0B65ED" />
@@ -224,7 +225,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenDownloadModal })
           </div>
 
           {/* ── RIGHT COLUMN — Cinematic Scene ── */}
-          <div style={{ gridColumn: 'span 6' }}>
+          <div className="hero-col-right" style={{ gridColumn: 'span 6' }}>
             <div className="hero-scene" style={{ flexDirection: 'column', gap: '0', padding: '0' }}>
               {/* Scene top bar */}
               <div
@@ -280,8 +281,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenDownloadModal })
               >
                 {/* Phase 0 — Obstruction */}
                 {phase === 0 && (
-                  <div className="animate-fade-in" style={{ display: 'flex', flexDirection: 'column', gap: '16px', height: '100%' }}>
-                    <div style={{ flex: 1, display: 'flex', gap: '16px', alignItems: 'stretch' }}>
+                  <div className="animate-fade-in" style={{ display: 'flex', flexDirection: 'column', gap: '12px', height: '100%' }}>
+                    <div style={{ flex: 1, display: 'flex', gap: '8px', alignItems: 'stretch' }}>
                       {/* Blocked car */}
                       <div
                         style={{
@@ -289,12 +290,12 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenDownloadModal })
                           background: '#FFFFFF',
                           borderRadius: '16px',
                           border: '2px solid #FEF3C7',
-                          padding: '20px',
+                          padding: '14px 8px',
                           display: 'flex',
                           flexDirection: 'column',
                           alignItems: 'center',
                           justifyContent: 'center',
-                          gap: '10px',
+                          gap: '8px',
                           boxShadow: '0 4px 16px rgba(217,119,6,0.08)',
                         }}
                       >
@@ -806,6 +807,27 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenDownloadModal })
           zIndex: 1,
         }}
       />
+
+      <style>{`
+        @media (max-width: 960px) {
+          .hero-grid {
+            grid-template-columns: 1fr !important;
+            gap: 36px !important;
+          }
+          .hero-col-left, .hero-col-right {
+            grid-column: span 12 !important;
+          }
+        }
+        @media (max-width: 480px) {
+          #hero {
+            padding-top: 96px !important;
+            padding-bottom: 48px !important;
+          }
+          .hero-scene {
+            border-radius: 16px !important;
+          }
+        }
+      `}</style>
     </section>
   );
 };

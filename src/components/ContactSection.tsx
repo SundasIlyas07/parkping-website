@@ -38,6 +38,7 @@ export const ContactSection: React.FC = () => {
     >
       <div className="container-pad">
         <div
+          className="contact-card"
           style={{
             maxWidth: '780px',
             margin: '0 auto',
@@ -321,6 +322,10 @@ export const ContactSection: React.FC = () => {
         @media (max-width: 640px) {
           .contact-form-grid {
             grid-template-columns: 1fr !important;
+          }
+          .contact-card {
+            padding: 24px 16px !important;
+            border-radius: 20px !important;
           }
         }
       `}</style>

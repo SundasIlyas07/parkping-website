@@ -375,6 +375,7 @@ export const AppExperienceSection: React.FC<AppExperienceSectionProps> = ({ onOp
             {/* FLOATING UI OVERLAY 1: FCM Push Notification Toast */}
             {showNotificationToast && (
               <div
+                className="floating-toast"
                 style={{
                   position: 'absolute',
                   top: -24,
@@ -427,6 +428,7 @@ export const AppExperienceSection: React.FC<AppExperienceSectionProps> = ({ onOp
 
             {/* FLOATING UI OVERLAY 2: Socket.IO Latency Pill */}
             <div
+              className="floating-pill-left"
               style={{
                 position: 'absolute',
                 left: -30,
@@ -451,6 +453,7 @@ export const AppExperienceSection: React.FC<AppExperienceSectionProps> = ({ onOp
 
             {/* FLOATING UI OVERLAY 3: Privacy Shield Pill */}
             <div
+              className="floating-pill-right"
               style={{
                 position: 'absolute',
                 right: -24,
@@ -481,6 +484,7 @@ export const AppExperienceSection: React.FC<AppExperienceSectionProps> = ({ onOp
             {/* PHYSICAL SMARTPHONE CHASSIS */}
             <div
               ref={cardRef}
+              className="phone-mockup-frame"
               style={{
                 width: 300,
                 height: 610,
@@ -952,6 +956,7 @@ export const AppExperienceSection: React.FC<AppExperienceSectionProps> = ({ onOp
 
         {/* BOTTOM CTA BAR: Showcase Call-to-Action */}
         <div
+          className="app-cta-banner"
           style={{
             marginTop: '72px',
             background: 'linear-gradient(135deg, #0A1628 0%, #0F172A 100%)',
@@ -1007,6 +1012,26 @@ export const AppExperienceSection: React.FC<AppExperienceSectionProps> = ({ onOp
           .app-showcase-grid {
             grid-template-columns: 1fr !important;
             gap: 40px !important;
+          }
+        }
+        @media (max-width: 640px) {
+          .floating-toast {
+            right: 0 !important;
+            top: -16px !important;
+            width: clamp(220px, 75vw, 260px) !important;
+          }
+          .floating-pill-left {
+            left: 0 !important;
+          }
+          .floating-pill-right {
+            right: 0 !important;
+          }
+          .phone-mockup-frame {
+            width: clamp(260px, 85vw, 300px) !important;
+          }
+          .app-cta-banner {
+            padding: 24px 16px !important;
+            border-radius: 20px !important;
           }
         }
       `}</style>
